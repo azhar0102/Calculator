@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+@layer components {
+  .btn {
+    @apply bg-button text-white roboto-thin text-3xl m-1 h-[70px] w-[70px] hover:bg-gray-400 duration-300 rounded-full;
+  }
+  .green_btn {
+    @apply bg-button roboto-thin text-green text-3xl m-1 h-[70px] w-[70px] hover:bg-gray-400 duration-300 rounded-full;
+  }
+}
