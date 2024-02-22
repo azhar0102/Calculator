@@ -1,26 +1,41 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
+
+const ACTIONS = {
+  ADD_DIGIT: "add-digit",
+  CHOOSE_OPERATION: "choose-opera3tion",
+  CLEAR: "clear",
+  DELETE_DIGIT: "delete-digit",
+  EVALUATE: "evaluate",
+};
+
+const reducer = (state, { type, payload }) => {};
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [number, setNumber] = useState("");
+
+  const [] = useReducer(reducer);
 
   return (
     <div className="bg-gray-500 flex items-center h-screen w-full">
-      <div className="bg-black rounded-3xl mx-auto h-[500px] w-[330px]">
-        <input className="bg-black w-full p-4 mt-5 outline-none" />
+      <div className="bg-black rounded-3xl mx-auto h-[530px] w-[330px]">
+        <div className="flex flex-col items-end justify-around break-words break-all p-2 mt-5">
+          <div className="text-slate-400 text-2xl roboto-thin">
+            {previousOperand} {operation}
+          </div>
+          <div className="text-white text-3xl roboto-thin">
+            {currentOperand}
+          </div>
+        </div>
         <hr className=" w-full border-button" />
         <div className="grid grid-cols-4 pt-2">
-          <button className="bg-button text-red roboto-thin text-3xl m-1 h-[70px] w-[70px] hover:bg-gray-400 duration-300 rounded-full">
-            C
-          </button>
-          <button className="bg-button text-red roboto-thin text-3xl m-1 h-[70px] w-[70px] hover:bg-gray-400 duration-300 rounded-full">
-            DEL
-          </button>
+          <button className="red_btn">C</button>
+          <button className="red_btn">DEL</button>
           <div></div>
           <button className="green_btn">&divide;</button>
           <button className="btn">1</button>
           <button className="btn">2</button>
           <button className="btn">3</button>
-          <button className="green_btn">X</button>
+          <button className="green_btn">&times;</button>
           <button className="btn">4</button>
           <button className="btn">5</button>
           <button className="btn">6</button>
@@ -28,7 +43,7 @@ function App() {
           <button className="btn">7</button>
           <button className="btn">8</button>
           <button className="btn">9</button>
-          <button className="green_btn">-</button>
+          <button className="green_btn">&ndash;</button>
           <button className="btn">0</button>
           <button className="btn">.</button>
           <div></div>
