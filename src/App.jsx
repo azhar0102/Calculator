@@ -1,19 +1,31 @@
 import { useReducer, useState } from "react";
+import DigitButton from "./components/DigitButton";
 
-const ACTIONS = {
+export const ACTIONS = {
   ADD_DIGIT: "add-digit",
-  CHOOSE_OPERATION: "choose-opera3tion",
+  CHOOSE_OPERATION: "choose-operation",
   CLEAR: "clear",
   DELETE_DIGIT: "delete-digit",
   EVALUATE: "evaluate",
 };
 
-const reducer = (state, { type, payload }) => {};
+const reducer = (state, { type, payload }) => {
+  switch (type) {
+    case ACTIONS.ADD_DIGIT:
+      return {
+        ...state,
+        currentOperand: `${state.currentOperand || ""}${payload.digit}`,
+      };
+  }
+};
 
 function App() {
   const [number, setNumber] = useState("");
 
-  const [] = useReducer(reducer);
+  const [{ previousOperand, currentOperand, operation }, dispatch] = useReducer(
+    reducer,
+    {}
+  );
 
   return (
     <div className="bg-gray-500 flex items-center h-screen w-full">
@@ -31,20 +43,22 @@ function App() {
           <button className="red_btn">C</button>
           <button className="red_btn">DEL</button>
           <div></div>
+
           <button className="green_btn">&divide;</button>
-          <button className="btn">1</button>
-          <button className="btn">2</button>
-          <button className="btn">3</button>
+          <DigitButton digit={"1"} dispatch={dispatch} />
+          <DigitButton digit={"2"} dispatch={dispatch} />
+          <DigitButton digit={"3"} dispatch={dispatch} />
           <button className="green_btn">&times;</button>
-          <button className="btn">4</button>
-          <button className="btn">5</button>
-          <button className="btn">6</button>
+          <DigitButton digit={"4"} dispatch={dispatch} />
+          <DigitButton digit={"5"} dispatch={dispatch} />
+          <DigitButton digit={"6"} dispatch={dispatch} />
           <button className="green_btn">+</button>
-          <button className="btn">7</button>
-          <button className="btn">8</button>
-          <button className="btn">9</button>
+          <DigitButton digit={"7"} dispatch={dispatch} />
+          <DigitButton digit={"8"} dispatch={dispatch} />
+          <DigitButton digit={"9"} dispatch={dispatch} />
+
           <button className="green_btn">&ndash;</button>
-          <button className="btn">0</button>
+          <DigitButton digit={"0"} dispatch={dispatch} />
           <button className="btn">.</button>
           <div></div>
           <button className="green_btn">=</button>
