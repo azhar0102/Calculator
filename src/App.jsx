@@ -13,6 +13,13 @@ export const ACTIONS = {
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
+      if (state.overwrite) {
+        return {
+          ...state,
+          currentOperand: payload.digit,
+          overwrite: false,
+        };
+      }
       if (payload.digit === "0" && state.currentOperand === "0") {
         return state;
       }
@@ -46,6 +53,21 @@ const reducer = (state, { type, payload }) => {
       };
     case ACTIONS.CLEAR:
       return {};
+    case ACTIONS.DELETE_DIGIT:
+      if (state.overwrite) {
+        return {
+          ...state,
+          overwrite: false,
+          currentOperand: null,
+        };
+      }
+      if (state.currentOperand == null) return state;
+      if (state.currentOperand === 1) return { ...state, currentOperand: null };
+
+      return {
+        ...state,
+        currentOperand: state.currentOperand.slice(0, -1),
+      };
     case ACTIONS.EVALUATE:
       if (
         state.previousOperand == null ||
@@ -56,6 +78,7 @@ const reducer = (state, { type, payload }) => {
       }
       return {
         ...state,
+        overwrite: true,
         previousOperand: null,
         operation: null,
         currentOperand: evaluate(state),
@@ -110,7 +133,12 @@ function App() {
           >
             C
           </button>
-          <button className="red_btn">DEL</button>
+          <button
+            className="red_btn"
+            onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}
+          >
+            DEL
+          </button>
           <div></div>
 
           <OperationButton operation="÷" dispatch={dispatch} />
@@ -129,11 +157,12 @@ function App() {
           <DigitButton digit="0" dispatch={dispatch} />
           <DigitButton digit="." dispatch={dispatch} />
           <div></div>
-          <OperationButton //change it to normal btn tag
-            operation="="
-            dispatch={dispatch}
+          <button
+            className="green_btn"
             onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
-          />
+          >
+            =
+          </button>
         </div>
       </div>
     </div>
