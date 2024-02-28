@@ -10,6 +10,15 @@ export const ACTIONS = {
   EVALUATE: "evaluate",
 };
 
+const INTEGER_FORMATTER = new Intl.NumberFormat("en-US", {
+  maximumFractionDigits: 0,
+});
+function formatOperand(operand) {
+  if (operand == null) return;
+  const [integer, decimal] = operand.split(".");
+  if (decimal == null) return INTEGER_FORMATTER.format(integer);
+  return `${INTEGER_FORMATTER.format(integer)}.${decimal}`;
+}
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
@@ -23,6 +32,7 @@ const reducer = (state, { type, payload }) => {
       if (payload.digit === "0" && state.currentOperand === "0") {
         return state;
       }
+      if (payload.digit === "." && state.currentOperand == null) return state;
       if (payload.digit === "." && state.currentOperand.includes(".")) {
         return state;
       }
@@ -119,10 +129,10 @@ function App() {
       <div className="bg-black rounded-3xl mx-auto h-[530px] w-[330px]">
         <div className="flex flex-col items-end justify-around break-words break-all p-2 mt-5">
           <div className="text-slate-400 text-2xl roboto-thin p-4">
-            {previousOperand} {operation}
+            {formatOperand(previousOperand)} {operation}
           </div>
           <div className="text-white text-3xl roboto-thin p-4">
-            {currentOperand}
+            {formatOperand(currentOperand)}
           </div>
         </div>
         <hr className=" w-full border-button" />
