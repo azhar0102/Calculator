@@ -176,14 +176,14 @@ function App() {
     //     </div>
     //   </div>
     // </div>
-    <div className="bg-gray-500 flex flex-col items-center h-screen w-full">
-      <div className="flex flex-col items-end justify-around h-max w-[330px] rounded-t-3xl break-words break-all p-1 bg-black">
-        <div className="text-slate-400 text-2xl roboto-thin p-4">
-          {formatOperand(previousOperand)} {operation}
-        </div>
-        <div className="text-white text-3xl roboto-thin p-4">
-          {formatOperand(currentOperand)}
-        </div>
+    <div className="bg-gray-500 flex flex-col justify-center items-center h-screen w-full">
+    <div className="flex flex-col items-end justify-around w-[330px] rounded-t-3xl break-words break-all p-1 bg-black">
+      <div className="text-white text-2xl roboto-thin min-h-[50px]">
+  {formatOperand(previousOperand)} {operation}
+</div>
+<div className="text-white text-2xl roboto-thin pb-4 min-h-[50px]">
+  {formatOperand(currentOperand)}
+</div>
       </div>
       <div className="bg-black rounded-b-3xl mx-auto h-[410px] w-[330px]">
         <hr className=" w-full border-button" />
