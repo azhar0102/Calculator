@@ -125,16 +125,67 @@ function App() {
   );
 
   return (
-    <div className="bg-gray-500 flex items-center h-screen w-full">
-      <div className="bg-black rounded-3xl mx-auto h-[530px] w-[330px]">
-        <div className="flex flex-col items-end justify-around break-words break-all p-2 mt-5">
-          <div className="text-slate-400 text-2xl roboto-thin p-4">
-            {formatOperand(previousOperand)} {operation}
-          </div>
-          <div className="text-white text-3xl roboto-thin p-4">
-            {formatOperand(currentOperand)}
-          </div>
+    // <div className="bg-gray-500 flex items-center h-screen w-full">
+    //   <div className="bg-black rounded-3xl mx-auto h-[530px] w-[330px]">
+    //     <div className="flex flex-col items-end justify-around break-words break-all p-2 mt-5">
+    //       <div className="text-slate-400 text-2xl roboto-thin p-4">
+    //         {formatOperand(previousOperand)} {operation}
+    //       </div>
+    //       <div className="text-white text-3xl roboto-thin p-4">
+    //         {formatOperand(currentOperand)}
+    //       </div>
+    //     </div>
+    //     <hr className=" w-full border-button" />
+    //     <div className="grid grid-cols-4 pt-2">
+    //       <button
+    //         className="red_btn"
+    //         onClick={() => dispatch({ type: ACTIONS.CLEAR })}
+    //       >
+    //         C
+    //       </button>
+    //       <button
+    //         className="red_btn"
+    //         onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}
+    //       >
+    //         DEL
+    //       </button>
+    //       <div></div>
+
+    //       <OperationButton operation="÷" dispatch={dispatch} />
+    //       <DigitButton digit="1" dispatch={dispatch} />
+    //       <DigitButton digit="2" dispatch={dispatch} />
+    //       <DigitButton digit="3" dispatch={dispatch} />
+    //       <OperationButton operation="x" dispatch={dispatch} />
+    //       <DigitButton digit="4" dispatch={dispatch} />
+    //       <DigitButton digit="5" dispatch={dispatch} />
+    //       <DigitButton digit="6" dispatch={dispatch} />
+    //       <OperationButton operation="+" dispatch={dispatch} />
+    //       <DigitButton digit="7" dispatch={dispatch} />
+    //       <DigitButton digit="8" dispatch={dispatch} />
+    //       <DigitButton digit="9" dispatch={dispatch} />
+    //       <OperationButton operation="-" dispatch={dispatch} />
+    //       <DigitButton digit="0" dispatch={dispatch} />
+    //       <DigitButton digit="." dispatch={dispatch} />
+    //       <div></div>
+    //       <button
+    //         className="green_btn"
+    //         onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
+    //       >
+    //         =
+    //       </button>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="bg-gray-500 flex flex-col items-center h-screen w-full">
+      <div className="flex flex-col items-end justify-around h-max w-[330px] rounded-t-3xl break-words break-all p-1 bg-black">
+        <div className="text-slate-400 text-2xl roboto-thin p-4">
+          {formatOperand(previousOperand)} {operation}
         </div>
+        <div className="text-white text-3xl roboto-thin p-4">
+          {formatOperand(currentOperand)}
+        </div>
+      </div>
+      <div className="bg-black rounded-b-3xl mx-auto h-[410px] w-[330px]">
         <hr className=" w-full border-button" />
         <div className="grid grid-cols-4 pt-2">
           <button
