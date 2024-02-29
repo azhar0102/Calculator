@@ -127,10 +127,10 @@ function App() {
   return (
     <div className="bg-gray-500 flex flex-col justify-center items-center h-screen w-full">
       <div className="flex flex-col items-end justify-around w-[330px] rounded-t-3xl break-words break-all p-1 bg-black">
-        <div className="text-slate-400 text-2xl roboto-thin min-h-[50px]">
+        <div className="text-slate-400 text-2xl pr-4 pt-2 roboto-thin min-h-[50px]">
           {formatOperand(previousOperand)} {operation}
         </div>
-        <div className="text-white text-3xl roboto-thin pb-4 min-h-[50px]">
+        <div className="text-white text-3xl roboto-thin pr-4 pb-4 min-h-[50px]">
           {formatOperand(currentOperand)}
         </div>
       </div>
